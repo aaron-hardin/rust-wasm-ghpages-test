@@ -27,11 +27,7 @@ jobs:
         run: rustup target add wasm32-unknown-unknown
 
       - name: Build project
-        run: trunk build --release
-
-      # changes references in index.html from '/' to '/rust-wasm-ghpages-test' to match GitHub Pages repository subdirectory
-      - name: Change reference from / to /rust-wasm-ghpages-test
-        run: sed -i 's/\/index-/\/rust-wasm-ghpages-test\/index-/g' dist/index.html
+        run: trunk build --public-url rust-wasm-ghpages-test --release
 
       - name: Commit dist to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@3.7.1
