@@ -29,6 +29,10 @@ jobs:
       - name: Build project
         run: trunk build --release
 
+      # changes references in index.html from '/' to '/rust-wasm-ghpages-test' to match GitHub Pages repository subdirectory
+      - name: Change reference from / to /rust-wasm-ghpages-test
+        run: sed -i 's/\/index-/\/rust-wasm-ghpages-test\/index-/g' dist/index.html
+
       - name: Commit dist to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@3.7.1
         with:
