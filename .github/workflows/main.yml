@@ -23,6 +23,9 @@ jobs:
         with:
           version: 'latest'
 
+      - name: Add web target
+        run: rustup target add wasm32-unknown-unknown
+
       - name: Build project
         run: trunk build --release
 
